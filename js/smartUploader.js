@@ -135,7 +135,7 @@ class SmartUploaderApp {
         try {
             console.log('Generating captions for:', fileName, 'on platforms:', platforms);
             
-            const response = await fetch('/.netlify/functions/generate-captions', {
+            const response = await fetch('/api/generate-captions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
