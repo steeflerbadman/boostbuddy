@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BoostBuddy - Boost existing video links across social platforms">
+    <title>Boost Links - BoostBuddy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f4f4f4;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Typography */
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        input, select {
+            padding: 0.875rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f8f9fa;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+            outline: none;
+        }
+
+        button {
+            padding: 1rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Message styles */
+        #message {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .success {
+            background: #e6ffe6;
+            color: #155724;
+        }
+
+        .error {
+            background: #fff3f3;
+            color: #721c24;
+        }
+
+        /* Back link */
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: #f8f9fa;
+            color: #0056b3;
+        }
+
+        /* Platform icons */
+        .platform-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            input, select, button {
+                padding: 0.75rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body data-component-name="&lt;body /&gt;">
+    <div class="container">
+        <h1>Boost Existing Links</h1>
+        <form id="boostForm">
+            <div class="form-group">
+                <label for="videoUrl">Video URL</label>
+                <input type="url" id="videoUrl" name="videoUrl" required="" placeholder="Enter your video URL">
+            </div>
+
+            <div class="form-group">
+                <label>Platforms</label>
+                <div class="platforms-section">
+                    <label class="platform-checkbox">
+                        <input type="checkbox" name="platform" value="youtube" checked="">
+                        <i class="fab fa-youtube platform-icon"></i>
+                        <span>YouTube</span>
+                    </label>
+                    <label class="platform-checkbox">
+                        <input type="checkbox" name="platform" value="tiktok">
+                        <i class="fab fa-tiktok platform-icon"></i>
+                        <span>TikTok</span>
+                    </label>
+                    <label class="platform-checkbox">
+                        <input type="checkbox" name="platform" value="instagram">
+                        <i class="fab fa-instagram platform-icon"></i>
+                        <span>Instagram</span>
+                    </label>
+                    <label class="platform-checkbox">
+                        <input type="checkbox" name="platform" value="twitter">
+                        <i class="fab fa-twitter platform-icon"></i>
+                        <span>Twitter</span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit">Boost Video</button>
+            <div id="message"></div>
+        </form>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script src="js/boostLinks.js"></script>
+    <script>
+        const boostForm = document.getElementById('boostForm');
+        boostForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const link = document.getElementById("videoUrl").value.trim();
+            const platform = document.querySelector('input[name="platform"]:checked').value;
+            
+            if (!link) {
+                const messageDiv = document.getElementById("message");
+                messageDiv.style.display = "block";
+                messageDiv.className = "error";
+                messageDiv.textContent = "Please enter a video link.";
+                return;
+            }
+
+            const messageDiv = document.getElementById("message");
+            messageDiv.style.display = "block";
+            messageDiv.textContent = "Boosting your video...";
+            messageDiv.className = "";
+
+            try {
+                // Simulate boost process
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                messageDiv.className = "success";
+                messageDiv.textContent = `Successfully boosted your ${platform} link!`;
+            } catch (error) {
+                messageDiv.className = "error";
+                messageDiv.textContent = "Failed to boost video. Please try again.";
+            }
+        });
+
+        // Add focus styles
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.classList.add('focused');
+            });
+            input.addEventListener('blur', () => {
+                input.classList.remove('focused');
+            });
+        });
+    </script>
+</body>
+</html>
